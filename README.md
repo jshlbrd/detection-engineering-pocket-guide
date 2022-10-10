@@ -127,7 +127,7 @@ Example: fieldX == "foo" and fieldY == /bar$/
 
 ### Aggregate
 
-Triggers detection by alerting when a variable exceeds a threshold. The most common aggregation is a count that exceeds a static threshold, but more complex aggregations may use statistical functions such as min, max, and standard deviation.<br>
+Triggers detection by alerting when a variable breaches a threshold according to an aggregation function. The most common aggregation is a count that exceeds a static threshold, but more complex aggregations may use statistical functions such as min, max, and standard deviation.<br>
 <br>
 Example: "foo" appeared more than 10 times over a period of 30 seconds
 
