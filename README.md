@@ -8,6 +8,8 @@
 
 [Visibility](#visibility)
 
+[Implementations](#implementations)
+
 [Relationship to Other Domains](#relationship-to-other-domains)
 
 ## Definitions
@@ -112,6 +114,28 @@ Examples: packet capture, files on-disk
 Data that is available for long periods of time, usually on the scale of days to months.<br>
 <br>
 Examples: flow records, data backups
+
+## Implementations
+
+Methods used to implement detection logic. These methods can be combined to create high complexity logic.
+
+### Match
+
+Triggers detection by alerting on a series of string or regular expression matches.<br>
+<br>
+Example: fieldX == "foo" and fieldY == /bar$/
+
+### Aggregate
+
+Triggers detection by alerting when a variable exceeds a threshold. The most common aggregation is a count that exceeds a static threshold, but more complex aggregations may use statistical functions such as min, max, and standard deviation.<br>
+<br>
+Example: "foo" appeared more than 10 times over a period of 30 seconds
+
+### Join
+
+Triggers detection by alerting when activities of interest coalesce on a variable across multiple events.
+
+Example: fieldX == "foo" in eventA AND fieldX == "bar" in eventB ON fieldY over a period of 1 minute
 
 ## Relationship to Other Domains
 
