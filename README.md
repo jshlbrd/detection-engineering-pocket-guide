@@ -8,6 +8,10 @@
 
 [Visibility](#visibility)
 
++ [Domain](#domain)
++ [Collection](#collection)
++ [Permanence](#permanence)
+
 [Implementations](#implementations)
 
 [Relationship to Other Domains](#relationship-to-other-domains)
@@ -16,24 +20,24 @@
 
 > ... the design, development, testing, and maintenance of threat detection logic.
 
-- [Panther](https://panther.com/cyber-explained/detection-engineering-benefits/), 2022
++ [Panther](https://panther.com/cyber-explained/detection-engineering-benefits/), 2022
 
 > ... the working end of threat intelligence ... take the intelligence team's threat profiles and prioritization as input with which to build the software and/or analytics that the team will use to detect those threats.
 
-- [Red Canary](https://redcanary.com/blog/modern-security-operations-center/), 2020
++ [Red Canary](https://redcanary.com/blog/modern-security-operations-center/), 2020
 
 > ... design and build security systems that constantly evolve to defend against current threats.
 
-- [Gigamon](https://blog.gigamon.com/2020/02/24/so-you-want-to-be-a-detection-engineer/), 2020
++ [Gigamon](https://blog.gigamon.com/2020/02/24/so-you-want-to-be-a-detection-engineer/), 2020
 
 ## Methodology
 
 Detection engineering should follow the [OODA loop](https://en.wikipedia.org/wiki/OODA_loop):
 
-- Observe: adversaries in the wild, threat intelligence reports, security advisories
-- Orient: assess applicability to the organization, systems, and data
-- Decide: prioritize detection based on potential risk and available tools
-- Act: develop, test, and deploy detection logic
++ Observe: adversaries in the wild, threat intelligence reports, security advisories
++ Orient: assess applicability to the organization, systems, and data
++ Decide: prioritize detection based on potential risk and available tools
++ Act: develop, test, and deploy detection logic
 
 ## Visibility
 
