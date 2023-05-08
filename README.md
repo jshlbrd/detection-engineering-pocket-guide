@@ -241,7 +241,7 @@ Metrics used to measure the effectiveness of a detection engineering program.
 
 Detection coverage metrics provide insight into detections that are active and generating alerts or metadata. These metrics should map detections to business environments, critical assets, or threat models; detections can also be mapped to visibility domains, data sources, or threat frameworks, but these mappings do not indicate the worth of a detection.
 
-Growth-phase detection engineering programs may measure coverage using a stoplight model (e.g., red, yellow, green) while mature programs should measure coverage using a percentage (e.g., 80%) based on active detections. See the Data Coverage section for an example using a stoplight model.
+Growth-phase detection engineering programs may measure coverage using a stoplight model (e.g., red, yellow, green) while mature programs should measure coverage using a count (in the case business environments or critical resources) or percentage (e.g., 80%; in the case of threat models) based on active detections. See the Data Coverage section for an example using a stoplight model.
 
 #### Data Coverage
 
@@ -266,7 +266,7 @@ Since no single data source provides full visibility into a domain, it is usuall
 
 #### Detection Reliability
 
-Detection reliability metrics track the consistency of detections over time. These can be measured by purposefully triggering the detection logic or by observing the detection logic in production, and are best measured using a percentage (e.g., 80%) that can roll up to a multi-dimensional coverage metric (e.g., coverage across data source, visibility domain, business environment).
+Detection reliability metrics track the consistency of detections over time. These can be measured by purposefully triggering the detection logic or by observing the detection logic in production, and are best measured using a percentage (e.g., 80%) that can roll up to a multi-dimensional reliability metric (e.g., reliability across data source, visibility domain, business environment).
 
 #### Data Reliability
 
