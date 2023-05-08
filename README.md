@@ -12,7 +12,20 @@
 + [Collection](#collection)
 + [Permanence](#permanence)
 
-[Implementations](#implementations)
+[Detection Methods](#detection-methods)
+
+[Alerting Strategies](#alerting-strategies)
+
++ [Direct Alerting](#direct-alerting)
++ [Signal-Based Alerting](#signal-based-alerting)
++ [Risk-Based Alerting](#risk-based-alerting)
+
+[Detection Systems](#detection-systems)
+
++ [Data Collection & Storage](#data-collection--storage)
++ [Data Transformation](#data-transformation)
++ [Data Analytics](#data-analytics)
++ [Monitoring & Metrics](#monitoring--metrics)
 
 [Relationship to Other Domains](#relationship-to-other-domains)
 
@@ -119,7 +132,7 @@ Data that is available for long periods of time, usually on the scale of days to
 <br>
 Examples: flow records, data backups
 
-## Implementations
+## Detection Methods
 
 Methods used to implement detection logic. These methods can be combined to create high complexity logic.
 
@@ -131,7 +144,7 @@ Example: fieldX == "foo" and fieldY == /bar$/
 
 ### Aggregate
 
-Triggers detection by alerting when a variable breaches a threshold according to an aggregation function. The most common aggregation is a count that exceeds a static threshold, but more complex aggregations may use statistical functions such as min, max, and standard deviation.<br>
+Triggers detection by alerting when a variable exceeds a threshold according to an aggregation function. The most common aggregation is a count that exceeds a static threshold, but more complex aggregations may use statistical functions such as min, max, and standard deviation.<br>
 <br>
 Example: "foo" appeared more than 10 times over a period of 30 seconds
 
@@ -141,15 +154,86 @@ Triggers detection by alerting when activities of interest coalesce on a variabl
 
 Example: fieldX == "foo" in eventA AND fieldX == "bar" in eventB ON fieldY over a period of 1 minute
 
+## Alerting Strategies
+
+Strategies for applying detection methods to generate alerts.
+
+### Direct Alerting
+
+Alerts are generated directly from a detection method.
+
+### Signal-Based Alerting
+
+Alerts are generated from one or more detection signals, which are atomic behaviors of interest. Signals are aggregated, chained, or joined to create alerts.
+
+### Risk-Based Alerting
+
+Alerts are generated from multiple detection methods that are combined into a risk score. Risk scores are calculated based on the potential impact of a security event or incident.
+
+## Detection Systems
+
+Capabilities provided by detection systems that allow engineers to achieve visibility, apply detection methods, and implement alerting strategies. Systems may provide one, some, or all of these capabilities. All of these capabilities are required to create a "detection platform."
+
+Generally, this is true:
+
++ The number of capabilities provided by a single tool or service is inversely proportional to the flexibility of the tool or service.
++ The number of tools or services used in a detection platform is directly proportional to the complexity of the platform.
+
+### Data Collection & Storage
+
+Provides the ability to collect and store data from a system or service.
+
+Key considerations:
+
++ Data collection
+  + Which data is necessary to enable detection and response?
+  + How is data collected and measured for reliability?
++ Data storage
+  + Which data provides short-term and long-term value?
+  + What is the cost of storing and retrieving data?
+
+### Data Transformation
+
+Provides the ability to format, normalize, and decorate data.
+
+Key considerations:
+
++ Formatting data
+  + Do all collection systems produce data in a format that is useful for detection?
++ Normalizing data
+  + Is the data normalized to a common schema or data model?
+  + Is the data normalized before or after it is written to persistent storage?
++ Decorating data
+  + Does the system provide the ability to enrich data?
+  + Does the system integrate with external tools or services used by the team?
+
+### Data Analytics
+
+Provides the ability to apply detection methods to, implement alerting strategies on, and visualize data.
+
+Key considerations:
+
++ Detection methods
+  + Which detection methods are supported?
+  + Is the system able to support custom detection methods?
+  + How are detection methods managed (e.g., in console, as code)?
++ Alerting strategies
+  + Which alerting strategies are supported?
+  + How does the team decide which alerting strategy to use?
+
+### Monitoring & Metrics
+
+Provides the ability to monitor the health of the detection platform.
+
 ## Relationship to Other Domains
 
 ### Threat Intelligence
 
-Produces enriched information that is consumed during detection engineering.
+Produces enriched information that is applied during detection engineering.
 
 ### Incident Response
 
-Consumes enriched data that is produced by detection engineering.
+Consumes enriched data (e.g, alerts) that is produced by detection engineering.
 
 ### Threat Hunting
 
