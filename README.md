@@ -27,6 +27,12 @@
 + [Data Analytics](#data-analytics)
 + [Monitoring & Metrics](#monitoring--metrics)
 
+[Detection Metrics](#detection-metrics)
+
++ [Coverage](#coverage)
++ [Reliability](#reliability)
++ [Timeliness](#timeliness)
+
 [Relationship to Other Domains](#relationship-to-other-domains)
 
 ## Definitions
@@ -224,6 +230,63 @@ Key considerations:
 ### Monitoring & Metrics
 
 Provides the ability to monitor the health of the detection platform.
+
+## Detection Metrics
+
+Metrics used to measure the effectiveness of a detection engineering program.
+
+### Coverage
+
+#### Detection Coverage
+
+Detection coverage metrics provide insight into detections that are active and generating alerts or metadata. These metrics should map detections to business environments, critical assets, or threat models; detections can also be mapped to visibility domains, data sources, or threat frameworks, but these mappings do not indicate the worth of a detection.
+
+Growth-phase detection engineering programs may measure coverage using a stoplight model (e.g., red, yellow, green) while mature programs should measure coverage using a percentage (e.g., 80%) based on active detections. See the Data Coverage section for an example using a stoplight model.
+
+#### Data Coverage
+
+Data coverage metrics provide insight into data that is available for detection engineering. These metrics should map visibility domains and data sources to business environments.
+
+Growth-phase detection engineering programs may measure coverage using a stoplight model (e.g., red, yellow, green) while mature programs should measure coverage using a percentage (e.g., 80%) based on observed data.
+
+Below is an example using a stoplight model to measure corporate and production business environments:
+
+| Business Environment | Visibility Domain | Data Source | Coverage |
+| -------- | ------- | ------- | ------- |
+| Corporate | Host | EDR | :green_apple: |
+| Corporate | Network | N/A | :tomato: |
+| Production | Cloud | CloudTrail | :lemon: |
+| Production | Host | N/A | :tomato: |
+| Production | Network | VPC Flow Logs | :green_apple: |
+| Production | Network | Load Balancer Logs | :lemon: |
+
+Since no single data source provides full visibility into a domain, it is usually necessary to layer multiple data sources to achieve full coverage in a single domain, and some tools may provide coverage across multiple domains.
+
+### Reliability
+
+#### Detection Reliability
+
+Detection reliability metrics track the consistency of detections over time. These can be measured by purposefully triggering the detection logic or by observing the detection logic in production, and are best measured using a percentage (e.g., 80%) that can roll up to a multi-dimensional coverage metric (e.g., coverage across data source, visibility domain, business environment).
+
+#### Data Reliability
+
+System reliability metrics track the consistency of data delivered to a detection system over time. Similar to detection reliability metrics, these can be measured by inserting and monitoring labelled data that is put into the system, and are best measured using a percentage (e.g., 80%).
+
+### Timeliness
+
+#### Detection Timeliness
+
+Detection timeliness metrics track latency of detections and the team responsible for implementing them, including:
+
++ Time to detect (the time between when an activity of interest occurs and when it is detected)
++ Time to implement (the time between when intelligence is available and when it is implemented in detection logic)
++ Time to fix (the time between when a detection is broken and when it is fixed)
+
+These metrics are best measured using time (e.g., 30 seconds, 5 days).
+
+#### Data Timeliness
+
+System timeliness metrics track the latency of data delivered to a detection system. These can be measured by observing data in production (from the time it is put into the system to the time it is available for detection) or by measuring the time it takes to process labelled data inside of the system, and is best measured using time (e.g., 30 seconds).
 
 ## Relationship to Other Domains
 
